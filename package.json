@@ -1,0 +1,16 @@
+{
+  "name": "tmodjs-loader",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/xosuperpig/tmodjs-loader.git",
+  "main": "index.js",
+  "keywords": [
+    "TmodJS",
+    "webpack-loader"
+  ],
+  "author": "zombieyang",
+  "dependencies": {
+    "delete": "^0.2.1",
+    "tmodjs": "^1.0.2"
+  }
+}
