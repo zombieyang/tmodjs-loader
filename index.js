@@ -15,8 +15,6 @@ module.exports = function () {
     options.output = process.cwd() + '/.temp';
 
     var tmod = new Tmod(__dirname, options);
-    // 不明白为什么要在构造函数里检查base/package.json的tmod版本，而且还写死了dependencies不能用devDependencies,
-    // 是为了阻止别人做封装么？
     tmod.base = process.cwd().replace(/\\/g, '/');
 
     var output = tmod._compile(this.resourcePath.replace(/\\/g, "/"));
@@ -27,7 +25,8 @@ module.exports = function () {
 
     //转化所有子模板为require
     var requires = output.requires.map(function (req) {
-        return "require('" + path.relative(path.dirname(output.sourceFile), req + extname).replace(/\\/g, '/') + "');";
+        // 需要加"./"前缀,否则无法找到该文件,你懂的
+        return "require('./" +  path.relative(path.dirname(output.sourceFile), req + extname).replace(/\\/g, '/') + "');";
     }).join('');
 
     clearTimeout(timer);
