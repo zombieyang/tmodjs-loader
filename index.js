@@ -27,7 +27,12 @@ module.exports = function () {
 
     //转化所有子模板为require
     var requires = output.requires.map(function (req) {
-        return "require('" + path.relative(path.dirname(output.sourceFile), req + extname).replace(/\\/g, '/') + "');";
+        var tmpPath = path.relative(path.dirname(output.sourceFile), req + extname).replace(/\\/g, '/');
+
+        //如果include的文件是当前目录下的文件,需要加"./"前缀,否则无法找到该文件,你懂的
+        tmpPath.indexOf("/") == -1 && (tmpPath = "./" + tmpPath);
+
+        return "require('" + tmpPath + "');";
     }).join('');
 
     clearTimeout(timer);
