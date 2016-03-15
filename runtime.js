@@ -58,7 +58,7 @@
 		}
 	}
 
-	var j = a.cache = {}, k = this.String, l = {
+	var j = a.cache = {}, k = String, l = {
 		"<": "&#60;",
 		">": "&#62;",
 		'"': "&#34;",
