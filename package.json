@@ -1,6 +1,6 @@
 {
   "name": "tmodjs-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "repository": "https://github.com/xosuperpig/tmodjs-loader.git",
   "main": "index.js",
